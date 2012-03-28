@@ -130,7 +130,7 @@ function! s:Ideone(line1, line2, ...)
   if len(id) == 0
     return
   endif
-  let content = iconv(join(getline(a:line1, a:line2), "\n")."\n", &encoding, "utf-8")
+  let content = join(getline(a:line1, a:line2), "\n")."\n"
   let res = ideone#createSubmission(s:ideone_user, s:ideone_pass, content, id, '', run, private)
   if has_key(res, "error")
     if res["error"] == "OK"
